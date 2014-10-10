@@ -1,14 +1,11 @@
 
 createPlot3 <- function() 
 {
-	cat ("outcomes\n")
 	## read in the complete data file
 	## separator is ";" so use read.csv2
+	cat ("outcomes\n")
 	outcomes <- read.csv2 ("household_power_consumption.txt", colClasses = "character")
 	str (outcomes)
-	
-	# having some problems with dates,
-	# so brute forcing it for now
 	
 	cat ("dayOne\n")
 	dayOne = subset (outcomes, outcomes$Date=="1/2/2007")
@@ -44,15 +41,14 @@ createPlot3 <- function()
 		data$Sub_metering_1, 
 		type = "n",
 		ylab="Energy sub metering",
-    xlab="")
+        xlab="")
 
-  ## draw the lines
+    ## draw the lines
 	lines (data$DateTime, data$Sub_metering_1, col="black")
 	lines (data$DateTime, data$Sub_metering_2, col="red")
 	lines (data$DateTime, data$Sub_metering_3, col="blue")
   
-  ## make the legend
-  # wrong pch for now
+    ## make the legend
 	legend ("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), , lwd=c(2.5,2.5,2.5))
   
 	## close the graphics device (which saves the PNG)

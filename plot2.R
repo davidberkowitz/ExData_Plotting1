@@ -1,14 +1,11 @@
 
 createPlot2 <- function() 
 {
-	cat ("outcomes\n")
 	## read in the complete data file
 	## separator is ";" so use read.csv2
+	cat ("outcomes\n")
 	outcomes <- read.csv2 ("household_power_consumption.txt", colClasses = "character")
 	str (outcomes)
-	
-	# having some problems with dates,
-	# so brute forcing it for now
 	
 	cat ("dayOne\n")
 	dayOne = subset (outcomes, outcomes$Date=="1/2/2007")
@@ -42,7 +39,7 @@ createPlot2 <- function()
 		data$Global_active_power, 
 		type = "l",
 		ylab="Global Active Power (kilowatts)",
-    xlab="")
+        xlab="")
 
 	## close the graphics device (which saves the PNG)
 	dev.off()

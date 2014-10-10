@@ -1,19 +1,11 @@
 
 createPlot1 <- function() 
 {
-	cat ("outcomes\n")
 	## read in the complete data file
 	## separator is ";" so use read.csv2
+	cat ("outcomes\n")
 	outcomes <- read.csv2 ("household_power_consumption.txt", colClasses = "character")
 	str (outcomes)
-
-	# having some problems with dates,
-	# so brute forcing it for now
-	#
-	#cat ("Date\n")
-	## convert the Date columm to Date
-	#outcomes$Date = as.POSIXct (outcomes$Date, format='%d/%m/%Y')
-	#str (outcomes)
 	
 	cat ("dayOne\n")
 	dayOne = subset (outcomes, outcomes$Date=="1/2/2007")
@@ -28,8 +20,8 @@ createPlot1 <- function()
 	data = rbind(dayOne, dayTwo)
 	str (data)
 	
-	cat ("Global_active_power\n")
 	## convert the column of interest to numeric
+	cat ("Global_active_power\n")
 	data$Global_active_power = as.numeric (data$Global_active_power)
 	str (data)
 	
@@ -37,9 +29,7 @@ createPlot1 <- function()
 	png (filename = "plot1.png")
 	
 	## setup the graphics parameters
-	#par (bg = "gray")	
 	par (bg = "transparent")
-	#par (bg = "darkgray")
 	
 	## create the histogram
 	hist (data$Global_active_power, 
