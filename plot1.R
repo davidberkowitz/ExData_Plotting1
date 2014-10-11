@@ -1,23 +1,10 @@
+source ("getData.R")
 
 createPlot1 <- function() 
 {
-	## read in the complete data file
-	## separator is ";" so use read.csv2
-	cat ("outcomes\n")
-	outcomes <- read.csv2 ("household_power_consumption.txt", colClasses = "character")
-	str (outcomes)
-	
-	cat ("dayOne\n")
-	dayOne = subset (outcomes, outcomes$Date=="1/2/2007")
-	str (dayOne)
-	
-	cat ("dayTwo\n")	
-	dayTwo = subset (outcomes, outcomes$Date=="2/2/2007")
-	str (dayTwo)
-
-	# combine them into a single data frame
-	cat ("data\n")	
-	data = rbind(dayOne, dayTwo)
+	## get the data for the two days
+  cat ("data")
+	data = getData()
 	str (data)
 	
 	## convert the column of interest to numeric
