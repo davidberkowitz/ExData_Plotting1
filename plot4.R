@@ -1,10 +1,9 @@
-
 source ("getData.R")
 
 createPlot4 <- function() 
 {
   ## get the data for the two days
-  cat ("data")
+  cat ("data\n")
   data = getData()
   str (data)
   
